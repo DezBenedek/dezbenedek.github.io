@@ -3,200 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dezső Benedek Péter - Jövőből Jött Programozó</title>
-    <!-- Tailwind CSS CDN (legújabb verzió) -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
-    <!-- Google Fonts: Futurisztikus font (Orbitron) -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Egyedi CSS stílusok inline-ban, futurisztikus animációkhoz -->
+    <title>BenedekTech - YouTube Csatorna</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        html {
-            scroll-behavior: smooth; /* Simább görgetés */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        body {
-            font-family: 'Orbitron', sans-serif; /* Futurisztikus font */
-            background: linear-gradient(135deg, #0F0C29, #302B63, #24243E); /* Neon gradient háttér */
-            color: #E0E0E0; /* Világos szürke szöveg sötétben */
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
         }
-        .neon-glow {
-            text-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF, 0 0 15px #00FFFF; /* Neon glow effekt szöveghez */
-            transition: text-shadow 0.3s ease;
+        .hover-scale {
+            transition: transform 0.3s ease;
         }
-        .glow-card {
-            background-color: rgba(30, 30, 30, 0.8); /* Transzparens sötét kártya */
-            border: 1px solid #00BCD4; /* Cyan border */
-            box-shadow: 0 0 10px rgba(0, 188, 212, 0.5); /* Glow shadow */
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        .hover-scale:hover {
+            transform: scale(1.05);
         }
-        .glow-card:hover {
-            box-shadow: 0 0 20px rgba(0, 188, 212, 0.8); /* Erősebb glow hover-nál */
-            transform: translateY(-5px); /* Felúszó effekt */
+        .section-hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-        @keyframes pulse {
-            0% { text-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF; }
-            50% { text-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF; }
-            100% { text-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF; }
-        }
-        .pulse-text {
-            animation: pulse 2s infinite;
-        }
-        /* Új: Részecske-szerű animáció JS-sel (egyszerű megvalósítás) */
-        .particle {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: radial-gradient(circle, rgba(0,255,255,0.8) 10%, transparent 70%);
-            animation: float 10s infinite linear;
-        }
-        @keyframes float {
-            0% { transform: translateY(0) scale(1); opacity: 1; }
-            100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+        .section-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body class="min-h-screen antialiased relative overflow-hidden">
-
-    <!-- Háttér részecskék JS-sel generálva (futurisztikus effekt) -->
-    <div id="particles-js"></div>
-
-    <!-- Hero szekció (futurisztikus bevezető) -->
-    <header class="relative py-20 text-center fade-in" id="hero">
-        <div class="max-w-4xl mx-auto px-6">
-            <img src="https://via.placeholder.com/150?text=Profilkép" alt="Dezső Benedek Péter profilképe" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-cyan-400 glow-card transition duration-300 hover:scale-105">
-            <h1 class="text-5xl font-bold neon-glow pulse-text">Dezső Benedek Péter</h1>
-            <p class="text-2xl mt-2 text-cyan-300">Jövőorientált Programozó Diák</p>
-            <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Üdv a 2045-ös univerzumban! Én vagyok Dezső Benedek Péter, aki az AI és webtech jövőjét építi. Fedezd fel digitális világomat, ahol a kód a kapu a holnaphoz.</p>
-            <button onclick="showToast()" class="mt-8 bg-cyan-600 hover:bg-cyan-700 text-white font-medium py-3 px-6 rounded-full transition duration-300 shadow-lg hover:shadow-cyan-500/50">
-                Induljunk a jövőbe!
-            </button>
+<body class="bg-gray-900 text-white font-sans">
+    <nav class="bg-gray-800 sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold">BenedekTech</h1>
+                </div>
+                <div class="hidden md:flex space-x-4">
+                    <a href="#home" class="hover:bg-gray-700 px-3 py-2 rounded transition duration-300">Kezdőlap</a>
+                    <a href="#videos" class="hover:bg-gray-700 px-3 py-2 rounded transition duration-300">Videók</a>
+                    <a href="#about" class="hover:bg-gray-700 px-3 py-2 rounded transition duration-300">Rólunk</a>
+                    <a href="#contact" class="hover:bg-gray-700 px-3 py-2 rounded transition duration-300">Kapcsolat</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden bg-gray-700">
+                <a href="#home" class="block px-4 py-2 hover:bg-gray-600">Kezdőlap</a>
+                <a href="#videos" class="block px-4 py-2 hover:bg-gray-600">Videók</a>
+                <a href="#about" class="block px-4 py-2 hover:bg-gray-600">Rólunk</a>
+                <a href="#contact" class="block px-4 py-2 hover:bg-gray-600">Kapcsolat</a>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- Rólam szekció -->
-    <section class="py-12 px-6 max-w-4xl mx-auto glow-card fade-in" id="about">
-        <h2 class="text-3xl font-semibold mb-6 border-b-2 border-cyan-400 pb-2 neon-glow">Rólam</h2>
-        <p class="text-lg leading-relaxed text-gray-300">
-            Mint egy AI-asszisztens barát, én, Dezső Benedek Péter, a jövő techjeit tanulmányozom. Szakértő vagyok webfejlesztésben, AI-ban és innovatív megoldásokban – készen állok a következő evolúcióra.
-        </p>
-    </section>
-
-    <!-- Készségek szekció -->
-    <section class="py-12 px-6 max-w-4xl mx-auto glow-card fade-in" id="skills">
-        <h2 class="text-3xl font-semibold mb-6 border-b-2 border-cyan-400 pb-2 text-center neon-glow">Készségeim</h2>
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <div class="flex items-center justify-center p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-300 glow-card">
-                <svg class="w-6 h-6 mr-2 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l0 9"></path></svg>
-                <span>HTML/CSS</span>
-            </div>
-            <div class="flex items-center justify-center p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-300 glow-card">
-                <svg class="w-6 h-6 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-4v-1h4V8l3 3m0 0l3 3m-3-3l-3-3"></path></svg>
-                <span>JavaScript</span>
-            </div>
-            <div class="flex items-center justify-center p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-300 glow-card">
-                <svg class="w-6 h-6 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
-                <span>Python</span>
-            </div>
-            <div class="flex items-center justify-center p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-300 glow-card">
-                <svg class="w-6 h-6 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                <span>Git</span>
-            </div>
-            <div class="flex items-center justify-center p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-300 glow-card">
-                <svg class="w-6 h-6 mr-2 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
-                <span>Tailwind CSS</span>
-            </div>
-            <div class="flex items-center justify-center p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition duration-300 glow-card">
-                <svg class="w-6 h-6 mr-2 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"></path></svg>
-                <span>React</span>
-            </div>
+    <section id="home" class="bg-gradient-to-r from-gray-800 to-blue-900 text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-in-up">
+            <h2 class="text-4xl md:text-5xl font-extrabold mb-4">Üdvözöl a BenedekTech!</h2>
+            <p class="text-xl mb-8">Technológiai újdonságok, tippek és trükkök magyarul, érthetően.</p>
+            <a href="https://www.youtube.com/@BenedekTech?sub_confirmation=1" target="_blank"
+               class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full text-lg hover-scale">
+                Feliratkozás a YouTube-on
+            </a>
         </div>
     </section>
 
-    <!-- Projektek szekció -->
-    <section class="py-12 px-6 max-w-4xl mx-auto glow-card fade-in" id="projects">
-        <h2 class="text-3xl font-semibold mb-6 border-b-2 border-cyan-400 pb-2 text-center neon-glow">Projektek</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="p-6 bg-gray-800 rounded-lg glow-card hover:animate-pulse">
-                <h3 class="text-2xl font-medium neon-glow">Projekt 1: AI-Webapp</h3>
-                <p class="text-gray-400">Egy jövőbeli chat app, amit JS-sel és AI API-kkel építettem. Fókusz: intelligens interakciók.</p>
-            </div>
-            <div class="p-6 bg-gray-800 rounded-lg glow-card hover:animate-pulse">
-                <h3 class="text-2xl font-medium neon-glow">Projekt 2: Quantum Script</h3>
-                <p class="text-gray-400">Egy szimulált quantum algoritmus Pythonban – előkészület a következő generációs programozásra.</p>
+    <section id="videos" class="py-16 section-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 text-center">Kiemelt Videók</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden hover-scale">
+                    <iframe class="w-full h-48" src="https://www.youtube.com/embed/VIDEO_ID_1" 
+                            title="Videó címe 1" frameborder="0" allowfullscreen></iframe>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Legújabb okostelefon teszt</h3>
+                        <p class="text-gray-400">Ismerd meg a legújabb technológiai csodát!</p>
+                        <a href="https://www.youtube.com/watch?v=VIDEO_ID_1" target="_blank"
+                           class="text-blue-400 hover:underline mt-2 inline-block">Megnézem</a>
+                    </div>
+                </div>
+                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden hover-scale">
+                    <iframe class="w-full h-48" src="https://www.youtube.com/embed/VIDEO_ID_2" 
+                            title="Videó címe 2" frameborder="0" allowfullscreen></iframe>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Hogyan válassz laptopot?</h3>
+                        <p class="text-gray-400">Minden, amit vásárlás előtt tudnod kell.</p>
+                        <a href="https://www.youtube.com/watch?v=VIDEO_ID_2" target="_blank"
+                           class="text-blue-400 hover:underline mt-2 inline-block">Megnézem</a>
+                    </div>
+                </div>
+                <div class="bg-gray-800 rounded-lg shadow-md overflow-hidden hover-scale">
+                    <iframe class="w-full h-48" src="https://www.youtube.com/embed/VIDEO_ID_3" 
+                            title="Videó címe 3" frameborder="0" allowfullscreen></iframe>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold mb-2">Szoftver tippek kezdőknek</h3>
+                        <p class="text-gray-400">Hasznos trükkök a mindennapokra.</p>
+                        <a href="https://www.youtube.com/watch?v=VIDEO_ID_3" target="_blank"
+                           class="text-blue-400 hover:underline mt-2 inline-block">Megnézem</a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Új szekció: Jövőbeli tervek (futurisztikus kiegészítés) -->
-    <section class="py-12 px-6 max-w-4xl mx-auto glow-card fade-in" id="future">
-        <h2 class="text-3xl font-semibold mb-6 border-b-2 border-cyan-400 pb-2 text-center neon-glow">Jövőbeli Terveim</h2>
-        <p class="text-lg leading-relaxed text-gray-300">
-            Célom, hogy az AI és webtech integrációjával forradalmat csináljak. Jelenleg dolgozom VR-projekteken és gépi tanuláson – gyere velem a jövőbe!
-        </p>
+    <section id="about" class="bg-gray-800 py-16 section-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 text-center">A BenedekTech-ről</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <img src="https://via.placeholder.com/500x300?text=BenedekTech+Logo" 
+                         alt="BenedekTech Logo" class="rounded-lg shadow-md hover-scale">
+                </div>
+                <div class="md:w-1/2 md:pl-8">
+                    <p class="text-lg text-gray-300 mb-4">
+                        A BenedekTech egy magyar YouTube csatorna, amely a legújabb technológiai trendekkel, 
+                        gadgetekkel és hasznos tippekkel foglalkozik. Célunk, hogy közérthető módon mutassuk 
+                        be a tech világ újdonságait, segítve ezzel a nézőinket a digitális világban való 
+                        eligazodásban.
+                    </p>
+                    <p class="text-lg text-gray-300">
+                        Csatlakozz hozzánk, és légy részese a technológia izgalmas világának!
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Kapcsolat szekció -->
-    <section class="py-12 px-6 max-w-4xl mx-auto glow-card fade-in" id="contact">
-        <h2 class="text-3xl font-semibold mb-6 border-b-2 border-cyan-400 pb-2 text-center neon-glow">Kapcsolat</h2>
-        <p class="text-lg text-gray-300">Lépj velem kapcsolatba: <a href="mailto:dezo.benedek@example.com" class="text-cyan-400 hover:neon-glow">dezo.benedek@example.com</a></p>
-        <p class="mt-2 text-gray-300">Vagy keresd fel: <a href="https://linkedin.com/in/dezobenedek" class="text-cyan-400 hover:neon-glow" target="_blank" rel="noopener noreferrer">linkedin.com/in/dezobenedek</a></p>
+    <section id="contact" class="py-16 section-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 text-center">Kapcsolat</h2>
+            <div class="max-w-lg mx-auto">
+                <div class="mb-4">
+                    <p class="text-lg text-gray-300 mb-2">
+                        <i class="fas fa-envelope mr-2"></i>Email: <a href="mailto:info@benedektech.hu" 
+                        class="text-blue-400 hover:underline">info@benedektech.hu</a>
+                    </p>
+                    <p class="text-lg text-gray-300">
+                        <i class="fab fa-youtube mr-2"></i>YouTube: <a href="https://www.youtube.com/@BenedekTech" 
+                        target="_blank" class="text-blue-400 hover:underline">@BenedekTech</a>
+                    </p>
+                </div>
+                <div class="flex justify-center space-x-4">
+                    <a href="https://www.youtube.com/@BenedekTech?sub_confirmation=1" target="_blank"
+                       class="text-red-600 hover:text-red-700 text-2xl hover-scale">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://twitter.com/BenedekTech" target="_blank"
+                       class="text-blue-400 hover:text-blue-500 text-2xl hover-scale">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com/BenedekTech" target="_blank"
+                       class="text-pink-600 hover:text-pink-700 text-2xl hover-scale">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Lábléc -->
-    <footer class="py-6 bg-gradient-to-r from-gray-900 to-cyan-900 text-center text-gray-500 fade-in">
-        <p>&copy; 2045 Dezső Benedek Péter. Powered by Grok AI – mert a jövő már itt van.</p>
+    <footer class="bg-gray-900 text-gray-300 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>© 2025 BenedekTech. Minden jog fenntartva.</p>
+        </div>
     </footer>
 
-    <!-- JavaScript kód (frissítve: toast, részecskék és animációk) -->
     <script>
-        // Részecske animáció (egyszerű JS implementáció)
-        function createParticles() {
-            const particleContainer = document.getElementById('particles-js');
-            for (let i = 0; i < 50; i++) { // 50 részecske a háttérben
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = `${Math.random() * 100}vw`;
-                particle.style.animationDuration = `${Math.random() * 5 + 5}s`; // Változó sebesség
-                particle.style.animationDelay = `-${Math.random() * 10}s`; // Változó indulás
-                particleContainer.appendChild(particle);
-            }
-        }
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-        // Toast message mutatása (animált verzió)
-        function showToast() {
-            const toast = document.createElement('div');
-            toast.className = 'fixed bottom-4 right-4 bg-cyan-600 text-white px-4 py-2 rounded shadow-lg opacity-0 transition-opacity duration-500 ease-in-out neon-glow';
-            toast.textContent = 'Üdv a jövőben! Köszönöm a látogatást. Lépj velünk kapcsolatba az új világért! 🚀';
-            document.body.appendChild(toast);
-            setTimeout(() => {
-                toast.style.opacity = '1';
-            }, 100);
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                setTimeout(() => {
-                    document.body.removeChild(toast);
-                }, 500);
-            }, 3500); // 3.5 másodperc után eltűnik
-        }
-
-        // Animációk kezelése (fade-in és intersection observer)
-        document.addEventListener('DOMContentLoaded', () => {
-            createParticles(); // Részecskék inicializálása
-            const sections = document.querySelectorAll('.fade-in');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-fade-in'); // Add fade-in ha látható
-                    }
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
                 });
-            }, { threshold: 0.1 });
-            sections.forEach(section => {
-                observer.observe(section);
             });
         });
 
-        // Konzol log: Debug és fun
-        console.log("Üdv a 2045-ös weboldalon – Grok AI-től, a jövőből! 🌌");
+        const sections = document.querySelectorAll('.section-hidden');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('section-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(section => observer.observe(section));
     </script>
-
 </body>
 </html>
